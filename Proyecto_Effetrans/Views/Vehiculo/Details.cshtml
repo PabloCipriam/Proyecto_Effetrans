@@ -1,0 +1,75 @@
+﻿@model Proyecto_Effetrans.Models.Vehiculo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vehiculo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Usuario:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+
+        <dt>
+            Marca:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdMarca)
+        </dd>
+
+        <dt>
+            Tipo de vehiculo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTipo_Vehiculo)
+        </dd>
+
+        <dt>
+            Placa:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Placa)
+        </dd>
+
+        <dt>
+            Modelo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            Licensia:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Licensia)
+        </dd>
+
+        <dt>
+            Estado:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdVehiculo }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

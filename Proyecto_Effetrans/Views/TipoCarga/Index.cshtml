@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Proyecto_Effetrans.Models.Tipo_Carga>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tipo de Carga</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdTipo_Carga }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.IdTipo_Carga }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdTipo_Carga })
+        </td>
+    </tr>
+}
+
+</table>

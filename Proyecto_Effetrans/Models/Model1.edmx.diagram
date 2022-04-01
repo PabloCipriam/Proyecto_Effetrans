@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="41be59bc8e5a4033b4f36c74e9b719db" Name="Diagram1">
+        <EntityTypeShape EntityType="BD_EffetransModel.Bloqueo" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Calificacion" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Carga" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Ciudad" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Confirmacion_Envio" Width="1.5" PointX="12.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Departamento" Width="1.5" PointX="3.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Envio" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Marca" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Oferta" Width="1.5" PointX="10.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Pago" Width="1.5" PointX="15" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Tipo_Carga" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Tipo_Pago" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Tipo_Usuario" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Tipo_Vehiculo" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Usuario" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_EffetransModel.Vehiculo" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Bloqueo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Calificacion_Confirmacion_Envio" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Calificacion_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Carga_Envio" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Carga_Tipo_Carga" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Ciudad_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Envio_Ciudad" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Confirmacion_Envio_Oferta" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Pago_Confirmacion_Envio" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Envio_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Envio_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Oferta_Envio" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Vehiculo_Marca" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Oferta_Tipo_Pago" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Oferta_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Usuario_Tipo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Vehiculo_Tipo_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="BD_EffetransModel.FK_Vehiculo_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

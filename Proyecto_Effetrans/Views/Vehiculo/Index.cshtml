@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Proyecto_Effetrans.Models.Vehiculo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Vehículos</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Usuario
+        </th>
+        <th>
+            Marca
+        </th>
+        <th>
+            Tipo de vehiculo
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Placa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Licensia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Proyecto_Effetrans.Controllers.VehiculoController.NombreUsuario(item.IdUsuario)
+        </td>
+        <td>
+            @Proyecto_Effetrans.Controllers.VehiculoController.NombreMarca(item.IdMarca)
+        </td>
+        <td>
+            @Proyecto_Effetrans.Controllers.VehiculoController.NombreTipo_Vehiculo(item.IdTipo_Vehiculo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Placa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Licensia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdVehiculo }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.IdVehiculo }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdVehiculo })
+        </td>
+    </tr>
+}
+
+</table>

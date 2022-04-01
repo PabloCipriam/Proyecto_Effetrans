@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Proyecto_Effetrans.Models.Departamento>
+
+<select class="form-control" id="IdDepartamento" name="IdDepartamento">
+    @foreach (var item in Model)
+    {
+        <option value="@item.IdDepartamento">@item.Nombre</option>
+    }
+</select>

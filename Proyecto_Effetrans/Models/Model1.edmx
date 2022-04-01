@@ -1,0 +1,1235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_EffetransModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bloqueo">
+          <Key>
+            <PropertyRef Name="IdBloqueo" />
+          </Key>
+          <Property Name="IdBloqueo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="date" Nullable="false" />
+          <Property Name="Fecha_Fin" Type="date" Nullable="false" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calificacion">
+          <Key>
+            <PropertyRef Name="IdCalificacion" />
+          </Key>
+          <Property Name="IdCalificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdConfirmacion_Envio" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Puntuacion" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="nchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carga">
+          <Key>
+            <PropertyRef Name="IdCarga" />
+          </Key>
+          <Property Name="IdCarga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEnvio" Type="int" Nullable="false" />
+          <Property Name="IdTipo_Carga" Type="int" Nullable="false" />
+          <Property Name="Peso" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Longitud" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="IdCiudad" />
+          </Key>
+          <Property Name="IdCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="IdDepartamento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Confirmacion_Envio">
+          <Key>
+            <PropertyRef Name="IdConfirmacion_Envio" />
+          </Key>
+          <Property Name="IdConfirmacion_Envio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdOferta" Type="int" Nullable="false" />
+          <Property Name="Nombre_Destinatario" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido_Destinatario" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Telefono_Destinatario" Type="float" Nullable="false" />
+          <Property Name="Fecha_Llegada" Type="date" Nullable="false" />
+          <Property Name="Fecha_Recogido" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="IdDepartamento" />
+          </Key>
+          <Property Name="IdDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Envio">
+          <Key>
+            <PropertyRef Name="IdEnvio" />
+          </Key>
+          <Property Name="IdEnvio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fecha_Limite_Llegada" Type="date" Nullable="false" />
+          <Property Name="Codigo_Postal" Type="int" Nullable="false" />
+          <Property Name="Comentario_Envio" Type="nchar" MaxLength="200" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="date" Nullable="false" />
+          <Property Name="IdDepartamento" Type="int" Nullable="false" />
+          <Property Name="IdCiudad" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="IdMarca" />
+          </Key>
+          <Property Name="IdMarca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Oferta">
+          <Key>
+            <PropertyRef Name="IdOferta" />
+          </Key>
+          <Property Name="IdOferta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEnvio" Type="int" Nullable="false" />
+          <Property Name="IdVehiculo" Type="int" Nullable="false" />
+          <Property Name="IdTipo_Pago" Type="int" Nullable="false" />
+          <Property Name="Fecha_Disponibilidad" Type="date" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="Confirmacion" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="IdPago" />
+          </Key>
+          <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdConfirmacion_Envio" Type="int" Nullable="false" />
+          <Property Name="Fecha_Confirmacion_Pago" Type="date" Nullable="false" />
+          <Property Name="Estado_Pago" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Valor" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Carga">
+          <Key>
+            <PropertyRef Name="IdTipo_Carga" />
+          </Key>
+          <Property Name="IdTipo_Carga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Pago">
+          <Key>
+            <PropertyRef Name="IdTipo_Pago" />
+          </Key>
+          <Property Name="IdTipo_Pago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Usuario">
+          <Key>
+            <PropertyRef Name="IdTipo_Usuario" />
+          </Key>
+          <Property Name="IdTipo_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Vehiculo">
+          <Key>
+            <PropertyRef Name="IdTipo_Vehiculo" />
+          </Key>
+          <Property Name="IdTipo_Vehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipo_Usuario" Type="int" Nullable="false" />
+          <Property Name="Correo" Type="nchar" MaxLength="40" Nullable="false" />
+          <Property Name="Contraseña" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Apellido" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Documento" Type="float" Nullable="false" />
+          <Property Name="Direccion" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telefono" Type="float" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="IdVehiculo" />
+          </Key>
+          <Property Name="IdVehiculo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdMarca" Type="int" Nullable="false" />
+          <Property Name="IdTipo_Vehiculo" Type="int" Nullable="false" />
+          <Property Name="Placa" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Modelo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Licensia" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bloqueo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bloqueo" Type="Self.Bloqueo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Bloqueo">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_Confirmacion_Envio">
+          <End Role="Confirmacion_Envio" Type="Self.Confirmacion_Envio" Multiplicity="1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Confirmacion_Envio">
+              <PropertyRef Name="IdConfirmacion_Envio" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="IdConfirmacion_Envio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carga_Envio">
+          <End Role="Envio" Type="Self.Envio" Multiplicity="1" />
+          <End Role="Carga" Type="Self.Carga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Envio">
+              <PropertyRef Name="IdEnvio" />
+            </Principal>
+            <Dependent Role="Carga">
+              <PropertyRef Name="IdEnvio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carga_Tipo_Carga">
+          <End Role="Tipo_Carga" Type="Self.Tipo_Carga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Carga" Type="Self.Carga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Carga">
+              <PropertyRef Name="IdTipo_Carga" />
+            </Principal>
+            <Dependent Role="Carga">
+              <PropertyRef Name="IdTipo_Carga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="IdDepartamento" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Confirmacion_Envio_Oferta">
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Confirmacion_Envio" Type="Self.Confirmacion_Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oferta">
+              <PropertyRef Name="IdOferta" />
+            </Principal>
+            <Dependent Role="Confirmacion_Envio">
+              <PropertyRef Name="IdOferta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="IdCiudad" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="IdCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="IdDepartamento" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Envio">
+          <End Role="Envio" Type="Self.Envio" Multiplicity="1" />
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Envio">
+              <PropertyRef Name="IdEnvio" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="IdEnvio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Tipo_Pago">
+          <End Role="Tipo_Pago" Type="Self.Tipo_Pago" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Pago">
+              <PropertyRef Name="IdTipo_Pago" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="IdTipo_Pago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Vehiculo">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="IdVehiculo" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="IdVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pago_Confirmacion_Envio">
+          <End Role="Confirmacion_Envio" Type="Self.Confirmacion_Envio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Confirmacion_Envio">
+              <PropertyRef Name="IdConfirmacion_Envio" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="IdConfirmacion_Envio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Tipo_Usuario">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="IdTipo_Usuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdTipo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="IdMarca" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Tipo_Vehiculo">
+          <End Role="Tipo_Vehiculo" Type="Self.Tipo_Vehiculo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Vehiculo">
+              <PropertyRef Name="IdTipo_Vehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="IdTipo_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_EffetransModelStoreContainer">
+          <EntitySet Name="Bloqueo" EntityType="Self.Bloqueo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calificacion" EntityType="Self.Calificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carga" EntityType="Self.Carga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Confirmacion_Envio" EntityType="Self.Confirmacion_Envio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Envio" EntityType="Self.Envio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oferta" EntityType="Self.Oferta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Carga" EntityType="Self.Tipo_Carga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Pago" EntityType="Self.Tipo_Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Vehiculo" EntityType="Self.Tipo_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bloqueo_Usuario" Association="Self.FK_Bloqueo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Bloqueo" EntitySet="Bloqueo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_Confirmacion_Envio" Association="Self.FK_Calificacion_Confirmacion_Envio">
+            <End Role="Confirmacion_Envio" EntitySet="Confirmacion_Envio" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_Usuario" Association="Self.FK_Calificacion_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carga_Envio" Association="Self.FK_Carga_Envio">
+            <End Role="Envio" EntitySet="Envio" />
+            <End Role="Carga" EntitySet="Carga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carga_Tipo_Carga" Association="Self.FK_Carga_Tipo_Carga">
+            <End Role="Tipo_Carga" EntitySet="Tipo_Carga" />
+            <End Role="Carga" EntitySet="Carga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Departamento" Association="Self.FK_Ciudad_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Confirmacion_Envio_Oferta" Association="Self.FK_Confirmacion_Envio_Oferta">
+            <End Role="Oferta" EntitySet="Oferta" />
+            <End Role="Confirmacion_Envio" EntitySet="Confirmacion_Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Ciudad" Association="Self.FK_Envio_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Departamento" Association="Self.FK_Envio_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Usuario" Association="Self.FK_Envio_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Envio" Association="Self.FK_Oferta_Envio">
+            <End Role="Envio" EntitySet="Envio" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Tipo_Pago" Association="Self.FK_Oferta_Tipo_Pago">
+            <End Role="Tipo_Pago" EntitySet="Tipo_Pago" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Vehiculo" Association="Self.FK_Oferta_Vehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pago_Confirmacion_Envio" Association="Self.FK_Pago_Confirmacion_Envio">
+            <End Role="Confirmacion_Envio" EntitySet="Confirmacion_Envio" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Tipo_Usuario" Association="Self.FK_Usuario_Tipo_Usuario">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Marca" Association="Self.FK_Vehiculo_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Tipo_Vehiculo" Association="Self.FK_Vehiculo_Tipo_Vehiculo">
+            <End Role="Tipo_Vehiculo" EntitySet="Tipo_Vehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Usuario" Association="Self.FK_Vehiculo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_EffetransModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bloqueo">
+          <Key>
+            <PropertyRef Name="IdBloqueo" />
+          </Key>
+          <Property Name="IdBloqueo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_Fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Bloqueo_Usuario" FromRole="Bloqueo" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Calificacion">
+          <Key>
+            <PropertyRef Name="IdCalificacion" />
+          </Key>
+          <Property Name="IdCalificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdConfirmacion_Envio" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Puntuacion" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Confirmacion_Envio" Relationship="Self.FK_Calificacion_Confirmacion_Envio" FromRole="Calificacion" ToRole="Confirmacion_Envio" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Calificacion_Usuario" FromRole="Calificacion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Carga">
+          <Key>
+            <PropertyRef Name="IdCarga" />
+          </Key>
+          <Property Name="IdCarga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEnvio" Type="Int32" Nullable="false" />
+          <Property Name="IdTipo_Carga" Type="Int32" Nullable="false" />
+          <Property Name="Peso" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Longitud" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Carga_Envio" FromRole="Carga" ToRole="Envio" />
+          <NavigationProperty Name="Tipo_Carga" Relationship="Self.FK_Carga_Tipo_Carga" FromRole="Carga" ToRole="Tipo_Carga" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="IdCiudad" />
+          </Key>
+          <Property Name="IdCiudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Ciudad_Departamento" FromRole="Ciudad" ToRole="Departamento" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Ciudad" FromRole="Ciudad" ToRole="Envio" />
+        </EntityType>
+        <EntityType Name="Confirmacion_Envio">
+          <Key>
+            <PropertyRef Name="IdConfirmacion_Envio" />
+          </Key>
+          <Property Name="IdConfirmacion_Envio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdOferta" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Destinatario" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Apellido_Destinatario" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Telefono_Destinatario" Type="Double" Nullable="false" />
+          <Property Name="Fecha_Llegada" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_Recogido" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Calificacion" Relationship="Self.FK_Calificacion_Confirmacion_Envio" FromRole="Confirmacion_Envio" ToRole="Calificacion" />
+          <NavigationProperty Name="Oferta" Relationship="Self.FK_Confirmacion_Envio_Oferta" FromRole="Confirmacion_Envio" ToRole="Oferta" />
+          <NavigationProperty Name="Pago" Relationship="Self.FK_Pago_Confirmacion_Envio" FromRole="Confirmacion_Envio" ToRole="Pago" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="IdDepartamento" />
+          </Key>
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_Ciudad_Departamento" FromRole="Departamento" ToRole="Ciudad" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Departamento" FromRole="Departamento" ToRole="Envio" />
+        </EntityType>
+        <EntityType Name="Envio">
+          <Key>
+            <PropertyRef Name="IdEnvio" />
+          </Key>
+          <Property Name="IdEnvio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Fecha_Limite_Llegada" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Codigo_Postal" Type="Int32" Nullable="false" />
+          <Property Name="Comentario_Envio" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="IdCiudad" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Carga" Relationship="Self.FK_Carga_Envio" FromRole="Envio" ToRole="Carga" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_Envio_Ciudad" FromRole="Envio" ToRole="Ciudad" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Envio_Departamento" FromRole="Envio" ToRole="Departamento" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Envio_Usuario" FromRole="Envio" ToRole="Usuario" />
+          <NavigationProperty Name="Oferta" Relationship="Self.FK_Oferta_Envio" FromRole="Envio" ToRole="Oferta" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="IdMarca" />
+          </Key>
+          <Property Name="IdMarca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_Marca" FromRole="Marca" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Oferta">
+          <Key>
+            <PropertyRef Name="IdOferta" />
+          </Key>
+          <Property Name="IdOferta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEnvio" Type="Int32" Nullable="false" />
+          <Property Name="IdVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="IdTipo_Pago" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Disponibilidad" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Confirmacion" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Confirmacion_Envio" Relationship="Self.FK_Confirmacion_Envio_Oferta" FromRole="Oferta" ToRole="Confirmacion_Envio" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Oferta_Envio" FromRole="Oferta" ToRole="Envio" />
+          <NavigationProperty Name="Tipo_Pago" Relationship="Self.FK_Oferta_Tipo_Pago" FromRole="Oferta" ToRole="Tipo_Pago" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Oferta_Vehiculo" FromRole="Oferta" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="IdPago" />
+          </Key>
+          <Property Name="IdPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdConfirmacion_Envio" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Confirmacion_Pago" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado_Pago" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Confirmacion_Envio" Relationship="Self.FK_Pago_Confirmacion_Envio" FromRole="Pago" ToRole="Confirmacion_Envio" />
+        </EntityType>
+        <EntityType Name="Tipo_Carga">
+          <Key>
+            <PropertyRef Name="IdTipo_Carga" />
+          </Key>
+          <Property Name="IdTipo_Carga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Carga" Relationship="Self.FK_Carga_Tipo_Carga" FromRole="Tipo_Carga" ToRole="Carga" />
+        </EntityType>
+        <EntityType Name="Tipo_Pago">
+          <Key>
+            <PropertyRef Name="IdTipo_Pago" />
+          </Key>
+          <Property Name="IdTipo_Pago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Oferta" Relationship="Self.FK_Oferta_Tipo_Pago" FromRole="Tipo_Pago" ToRole="Oferta" />
+        </EntityType>
+        <EntityType Name="Tipo_Usuario">
+          <Key>
+            <PropertyRef Name="IdTipo_Usuario" />
+          </Key>
+          <Property Name="IdTipo_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Tipo_Usuario" FromRole="Tipo_Usuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Tipo_Vehiculo">
+          <Key>
+            <PropertyRef Name="IdTipo_Vehiculo" />
+          </Key>
+          <Property Name="IdTipo_Vehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_Tipo_Vehiculo" FromRole="Tipo_Vehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipo_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="40" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Documento" Type="Double" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="Double" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Bloqueo" Relationship="Self.FK_Bloqueo_Usuario" FromRole="Usuario" ToRole="Bloqueo" />
+          <NavigationProperty Name="Calificacion" Relationship="Self.FK_Calificacion_Usuario" FromRole="Usuario" ToRole="Calificacion" />
+          <NavigationProperty Name="Envio" Relationship="Self.FK_Envio_Usuario" FromRole="Usuario" ToRole="Envio" />
+          <NavigationProperty Name="Tipo_Usuario" Relationship="Self.FK_Usuario_Tipo_Usuario" FromRole="Usuario" ToRole="Tipo_Usuario" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_Usuario" FromRole="Usuario" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="IdVehiculo" />
+          </Key>
+          <Property Name="IdVehiculo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdMarca" Type="Int32" Nullable="false" />
+          <Property Name="IdTipo_Vehiculo" Type="Int32" Nullable="false" />
+          <Property Name="Placa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Licensia" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK_Vehiculo_Marca" FromRole="Vehiculo" ToRole="Marca" />
+          <NavigationProperty Name="Oferta" Relationship="Self.FK_Oferta_Vehiculo" FromRole="Vehiculo" ToRole="Oferta" />
+          <NavigationProperty Name="Tipo_Vehiculo" Relationship="Self.FK_Vehiculo_Tipo_Vehiculo" FromRole="Vehiculo" ToRole="Tipo_Vehiculo" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Vehiculo_Usuario" FromRole="Vehiculo" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_Bloqueo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Bloqueo" Type="Self.Bloqueo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Bloqueo">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_Confirmacion_Envio">
+          <End Role="Confirmacion_Envio" Type="Self.Confirmacion_Envio" Multiplicity="1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Confirmacion_Envio">
+              <PropertyRef Name="IdConfirmacion_Envio" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="IdConfirmacion_Envio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carga_Envio">
+          <End Role="Envio" Type="Self.Envio" Multiplicity="1" />
+          <End Role="Carga" Type="Self.Carga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Envio">
+              <PropertyRef Name="IdEnvio" />
+            </Principal>
+            <Dependent Role="Carga">
+              <PropertyRef Name="IdEnvio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Carga_Tipo_Carga">
+          <End Role="Tipo_Carga" Type="Self.Tipo_Carga" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Carga" Type="Self.Carga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Carga">
+              <PropertyRef Name="IdTipo_Carga" />
+            </Principal>
+            <Dependent Role="Carga">
+              <PropertyRef Name="IdTipo_Carga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="IdDepartamento" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="IdCiudad" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="IdCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Confirmacion_Envio_Oferta">
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Confirmacion_Envio" Type="Self.Confirmacion_Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Oferta">
+              <PropertyRef Name="IdOferta" />
+            </Principal>
+            <Dependent Role="Confirmacion_Envio">
+              <PropertyRef Name="IdOferta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pago_Confirmacion_Envio">
+          <End Role="Confirmacion_Envio" Type="Self.Confirmacion_Envio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Confirmacion_Envio">
+              <PropertyRef Name="IdConfirmacion_Envio" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="IdConfirmacion_Envio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="IdDepartamento" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="IdDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Envio_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Envio" Type="Self.Envio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Envio">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Envio">
+          <End Role="Envio" Type="Self.Envio" Multiplicity="1" />
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Envio">
+              <PropertyRef Name="IdEnvio" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="IdEnvio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Marca">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="IdMarca" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Tipo_Pago">
+          <End Role="Tipo_Pago" Type="Self.Tipo_Pago" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Pago">
+              <PropertyRef Name="IdTipo_Pago" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="IdTipo_Pago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oferta_Vehiculo">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="IdVehiculo" />
+            </Principal>
+            <Dependent Role="Oferta">
+              <PropertyRef Name="IdVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Tipo_Usuario">
+          <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Usuario">
+              <PropertyRef Name="IdTipo_Usuario" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdTipo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Tipo_Vehiculo">
+          <End Role="Tipo_Vehiculo" Type="Self.Tipo_Vehiculo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Vehiculo">
+              <PropertyRef Name="IdTipo_Vehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="IdTipo_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BD_EffetransEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bloqueo" EntityType="Self.Bloqueo" />
+          <EntitySet Name="Calificacion" EntityType="Self.Calificacion" />
+          <EntitySet Name="Carga" EntityType="Self.Carga" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="Confirmacion_Envio" EntityType="Self.Confirmacion_Envio" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Envio" EntityType="Self.Envio" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Oferta" EntityType="Self.Oferta" />
+          <EntitySet Name="Pago" EntityType="Self.Pago" />
+          <EntitySet Name="Tipo_Carga" EntityType="Self.Tipo_Carga" />
+          <EntitySet Name="Tipo_Pago" EntityType="Self.Tipo_Pago" />
+          <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" />
+          <EntitySet Name="Tipo_Vehiculo" EntityType="Self.Tipo_Vehiculo" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" />
+          <AssociationSet Name="FK_Bloqueo_Usuario" Association="Self.FK_Bloqueo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Bloqueo" EntitySet="Bloqueo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_Confirmacion_Envio" Association="Self.FK_Calificacion_Confirmacion_Envio">
+            <End Role="Confirmacion_Envio" EntitySet="Confirmacion_Envio" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_Usuario" Association="Self.FK_Calificacion_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carga_Envio" Association="Self.FK_Carga_Envio">
+            <End Role="Envio" EntitySet="Envio" />
+            <End Role="Carga" EntitySet="Carga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Carga_Tipo_Carga" Association="Self.FK_Carga_Tipo_Carga">
+            <End Role="Tipo_Carga" EntitySet="Tipo_Carga" />
+            <End Role="Carga" EntitySet="Carga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Departamento" Association="Self.FK_Ciudad_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Ciudad" Association="Self.FK_Envio_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Confirmacion_Envio_Oferta" Association="Self.FK_Confirmacion_Envio_Oferta">
+            <End Role="Oferta" EntitySet="Oferta" />
+            <End Role="Confirmacion_Envio" EntitySet="Confirmacion_Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pago_Confirmacion_Envio" Association="Self.FK_Pago_Confirmacion_Envio">
+            <End Role="Confirmacion_Envio" EntitySet="Confirmacion_Envio" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Departamento" Association="Self.FK_Envio_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Envio_Usuario" Association="Self.FK_Envio_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Envio" EntitySet="Envio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Envio" Association="Self.FK_Oferta_Envio">
+            <End Role="Envio" EntitySet="Envio" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Marca" Association="Self.FK_Vehiculo_Marca">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Tipo_Pago" Association="Self.FK_Oferta_Tipo_Pago">
+            <End Role="Tipo_Pago" EntitySet="Tipo_Pago" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oferta_Vehiculo" Association="Self.FK_Oferta_Vehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Oferta" EntitySet="Oferta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Tipo_Usuario" Association="Self.FK_Usuario_Tipo_Usuario">
+            <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Tipo_Vehiculo" Association="Self.FK_Vehiculo_Tipo_Vehiculo">
+            <End Role="Tipo_Vehiculo" EntitySet="Tipo_Vehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Usuario" Association="Self.FK_Vehiculo_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_EffetransModelStoreContainer" CdmEntityContainer="BD_EffetransEntities3">
+          <EntitySetMapping Name="Bloqueo">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Bloqueo">
+              <MappingFragment StoreEntitySet="Bloqueo">
+                <ScalarProperty Name="IdBloqueo" ColumnName="IdBloqueo" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calificacion">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Calificacion">
+              <MappingFragment StoreEntitySet="Calificacion">
+                <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
+                <ScalarProperty Name="IdConfirmacion_Envio" ColumnName="IdConfirmacion_Envio" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Puntuacion" ColumnName="Puntuacion" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carga">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Carga">
+              <MappingFragment StoreEntitySet="Carga">
+                <ScalarProperty Name="IdCarga" ColumnName="IdCarga" />
+                <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+                <ScalarProperty Name="IdTipo_Carga" ColumnName="IdTipo_Carga" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Confirmacion_Envio">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Confirmacion_Envio">
+              <MappingFragment StoreEntitySet="Confirmacion_Envio">
+                <ScalarProperty Name="IdConfirmacion_Envio" ColumnName="IdConfirmacion_Envio" />
+                <ScalarProperty Name="IdOferta" ColumnName="IdOferta" />
+                <ScalarProperty Name="Nombre_Destinatario" ColumnName="Nombre_Destinatario" />
+                <ScalarProperty Name="Apellido_Destinatario" ColumnName="Apellido_Destinatario" />
+                <ScalarProperty Name="Telefono_Destinatario" ColumnName="Telefono_Destinatario" />
+                <ScalarProperty Name="Fecha_Llegada" ColumnName="Fecha_Llegada" />
+                <ScalarProperty Name="Fecha_Recogido" ColumnName="Fecha_Recogido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Envio">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Envio">
+              <MappingFragment StoreEntitySet="Envio">
+                <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Fecha_Limite_Llegada" ColumnName="Fecha_Limite_Llegada" />
+                <ScalarProperty Name="Codigo_Postal" ColumnName="Codigo_Postal" />
+                <ScalarProperty Name="Comentario_Envio" ColumnName="Comentario_Envio" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="IdCiudad" ColumnName="IdCiudad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oferta">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Oferta">
+              <MappingFragment StoreEntitySet="Oferta">
+                <ScalarProperty Name="IdOferta" ColumnName="IdOferta" />
+                <ScalarProperty Name="IdEnvio" ColumnName="IdEnvio" />
+                <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+                <ScalarProperty Name="IdTipo_Pago" ColumnName="IdTipo_Pago" />
+                <ScalarProperty Name="Fecha_Disponibilidad" ColumnName="Fecha_Disponibilidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Confirmacion" ColumnName="Confirmacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pago">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Pago">
+              <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+                <ScalarProperty Name="IdConfirmacion_Envio" ColumnName="IdConfirmacion_Envio" />
+                <ScalarProperty Name="Fecha_Confirmacion_Pago" ColumnName="Fecha_Confirmacion_Pago" />
+                <ScalarProperty Name="Estado_Pago" ColumnName="Estado_Pago" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Carga">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Tipo_Carga">
+              <MappingFragment StoreEntitySet="Tipo_Carga">
+                <ScalarProperty Name="IdTipo_Carga" ColumnName="IdTipo_Carga" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Pago">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Tipo_Pago">
+              <MappingFragment StoreEntitySet="Tipo_Pago">
+                <ScalarProperty Name="IdTipo_Pago" ColumnName="IdTipo_Pago" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Usuario">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Tipo_Usuario">
+              <MappingFragment StoreEntitySet="Tipo_Usuario">
+                <ScalarProperty Name="IdTipo_Usuario" ColumnName="IdTipo_Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Vehiculo">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Tipo_Vehiculo">
+              <MappingFragment StoreEntitySet="Tipo_Vehiculo">
+                <ScalarProperty Name="IdTipo_Vehiculo" ColumnName="IdTipo_Vehiculo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdTipo_Usuario" ColumnName="IdTipo_Usuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculo">
+            <EntityTypeMapping TypeName="BD_EffetransModel.Vehiculo">
+              <MappingFragment StoreEntitySet="Vehiculo">
+                <ScalarProperty Name="IdVehiculo" ColumnName="IdVehiculo" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="IdTipo_Vehiculo" ColumnName="IdTipo_Vehiculo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Licensia" ColumnName="Licensia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
